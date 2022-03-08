@@ -19,8 +19,12 @@
 - Run run.sh file by `./run.sh` (make sure the file has executable permissions)
 - Look for the response of the API with multi test cases in the terminal
 
+## How to run the tests
+- Make sure you have all the packages available in requirements.txt
+- Run `pytest` command in the terminal and see the result of test cases.
+
 Optionally 
-- You can run `127.0.0.1:8000/get_count?heads=10&legs=22` directly in your browser
+- You can run `127.0.0.1:8000/get_count?head_count=10&leg_count=22` directly in your browser
 
 Author,
 Prakhar
