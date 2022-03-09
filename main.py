@@ -1,9 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
 @app.get("/get_count")
-def get_count(head_count:int=0, leg_count:int=0):
+def get_count(head_count:int, leg_count:int):
     """
     Endpoint where you can fill in the values for head_count & leg_count to formulate the common classic 
     ancient Chinese puzzle: We count head_count heads and leg_count legs among the chickens and rabbits 
@@ -11,11 +11,11 @@ def get_count(head_count:int=0, leg_count:int=0):
     """
     error_msg="No solution"
     if(head_count>=leg_count):
-        return {"message": error_msg, "success": False}
+        raise HTTPException(status_code=400, detail= error_msg)
     elif(leg_count%2!=0):
-        return {"message": error_msg, "success": False}
+        raise HTTPException(status_code=400, detail= error_msg)
     elif(leg_count/2 < head_count):
-        return {"message": error_msg, "success": False}
+        raise HTTPException(status_code=400, detail= error_msg)
     else:
         rabbit_count=(leg_count-2*head_count)/2
         chicken_count=head_count-rabbit_count
